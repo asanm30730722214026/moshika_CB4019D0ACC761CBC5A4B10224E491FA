@@ -1,32 +1,22 @@
-class BankAccount:
+class Student:
   
-  def __init__(self, account_number, account_holder_name, initial_balance=0.0):
-    self.__account_number = account_number
-    self.__account_holder_name = account_holder_name
-    self.__account_balance = initial_balance
+  def __init__(self, name,roll_number,cgpa):
+    self.name = name
+    self.roll_number = roll_number
+    self.cgpa = cgpa
 
-  def deposit(self, amount):
-    if amount > 0:
-     self.__account_balance += amount
-     print("Deposited ₹{}. New balance: ₹{}".format(amount,self.__account_balance)) 
-      
-    else:
-      print("Invalid deposite amount. please deposite a positive amount.")
-  def withdraw(self, amount):
-    if amount > 0 and amount <= self.__account_balance:
-      self.__account_balance -= amount
-      print("Withdraw ₹{}. New balance: ₹{}".format(amount,self.__account_balance))
-    
-    else:
-      print("Invalid withdrawal amount or insufficient balance.")
-  def display_balance(self):
-   print("account balance for {} (account #{}): ₹{}".format(
-    self.__account_holder_name,self.__account_number,
-    self.__account_balance))
-account = BankAccount(account_number="1234567890",
-                      account_holder_name="moshika",
-                      initial_balance=500.0)
-account.display_balance()
-account.deposit(500.0)
-account.withdraw(200.0)
-account.display_balance()
+def sort_students(student_list):
+  #sort the list of student in descending order of cgpa
+  sorted_students = sorted(student_list,key=lambda student: student.cgpa,reverse=True)
+  return sorted_students
+  #exaple usage:
+student = [
+    Student("moshi","A123",9.7),
+    Student("savithiri","A124",9.8),
+    Student("kathir","A125",9.8),
+    Student("valar","A126",9.9),
+]
+sorted_students = sort_students(student)
+#print the sorted list of students
+for student in sorted_students:
+  print("Name: {},Roll Number: {},CGPA:{}".format(student.name,student.roll_number,student.cgpa))
